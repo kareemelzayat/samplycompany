@@ -6,9 +6,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface ComputerRepository extends CrudRepository<Computer, Long> {
     Page<Computer> findAll(Pageable pageable);
 
-    Page<Computer> findAllByEmployeeAbbreviation(Pageable pageable, String employeeAbbreviation);
+    List<Computer> findAllByEmployeeAbbreviation(String employeeAbbreviation);
+
+    Optional<Computer> findByIdAndEmployeeAbbreviation(Long id, String employeeAbbreviation);
 }
